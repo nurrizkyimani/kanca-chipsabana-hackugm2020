@@ -43,3 +43,17 @@ class _MyHomePageState extends State<MyHomePage> {
     cardList = _getMatchCard();
   }
 
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        ),
+        body: Center(
+          child: Stack(
+            alignment: Alignment.center,
+            children: cardList,
+          ),
+        ),
+    );
+  }
