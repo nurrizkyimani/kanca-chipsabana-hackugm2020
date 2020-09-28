@@ -1,103 +1,20 @@
+import 'package:chill/bloc/authentication/authentication_bloc.dart';
+import 'package:chill/bloc/blocDelegate.dart';
+import 'package:chill/repositories/userRepository.dart';
+import 'package:chill/ui/pages/home.dart';
 import 'package:flutter/material.dart';
-import 'MatchCard.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() => runApp(MyApp());
+import 'bloc/authentication/authentication_event.dart';
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Card Stack'),
-    );
-  }
-}
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  final UserRepository _userRepository = UserRepository();
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  BlocSupervisor.delegate = SimpleBlocDelegate();
 
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> cardList;
-
-  void _removeCard(index) {
-    setState(() {
-      cardList.removeAt(index);
-    });
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    cardList = _getMatchCard();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Stack(
-          alignment: Alignment.center,
-          children: cardList,
-        ),
-      ),
-    );
-  }
-
-  List<Widget> _getMatchCard() {
-    List<MatchCard> cards = new List();
-    cards.add(MatchCard(255, 0, 0, 10));
-    cards.add(MatchCard(0, 255, 0, 20));
-    cards.add(MatchCard(0, 0, 255, 30));
-
-    List<Widget> cardList = new List();
-
-    for (int x = 0; x < 3; x++) {
-      cardList.add(Positioned(
-        top: cards[x].margin,
-        child: Draggable(
-          onDragEnd: (drag) {
-            _removeCard(x);
-          },
-          childWhenDragging: Container(),
-          feedback: Card(
-            elevation: 12,
-            color: Color.fromARGB(255, cards[x].redColor, cards[x].greenColor,
-                cards[x].blueColor),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 240,
-              height: 300,
-            ),
-          ),
-          child: Card(
-            elevation: 12,
-            color: Color.fromARGB(255, cards[x].redColor, cards[x].greenColor,
-                cards[x].blueColor),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              width: 240,
-              height: 300,
-            ),
-          ),
-        ),
-      ));
-    }
-
-    return cardList;
-  }
+  runApp(BlocProvider(
+      create: (context) => AuthenticationBloc(userRepository: _userRepository)
+        ..add(AppStarted()),
+      child: Home(userRepository: _userRepository)));
 }
