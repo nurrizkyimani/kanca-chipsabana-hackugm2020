@@ -30,6 +30,37 @@ class MatchesRepository {
       _user.uid = user.documentID;
       _user.name = user['name'];
       _user.photo = user['photoUrl'];
-    })
+      _user.age = user['age'];
+      _user.location = user['location'];
+      _user.gender = user['gender'];
+      _user.interestedIn = user['interestedIn']
+    });
+
+    return _user;
+  }
+
+  Future openChat({currentUserId, selectedId}) async{
+    await _firestore
+        .collection('users')
+        .document(currentUserId)
+        .collection('chats')
+        .document(selectedUserId)
+        .setData({'timestamp': DateTime.now()});
+
+    await _firestore
+        .collection('users')
+        .document(selectedUserId)
+        .collection('chats')
+        .document(currentUserId)
+        .setData({'timestamp': DateTime.now()});
+
+    await _firestore
+        .collection('users')
+        .document(currentUserId)
+        .collection('matchedList')
+        .document(selectedUserId)
+        .delete();
+
+  
   }
 }
