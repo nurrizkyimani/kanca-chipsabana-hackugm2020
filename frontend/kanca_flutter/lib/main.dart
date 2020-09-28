@@ -12,7 +12,34 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo', 
       theme: ThemeData(
-        primarySwatch: Colors.blue
-      )
-    )
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(title:'Kanca Card Stack'),
+    );
   }
+}
+
+class MyHomePage extends StatefulWidget{
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  List<Widget> cardList;
+
+  void _removeCard(index){
+    setState(() {
+      cardList.removeAt(index);
+    });
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    cardList = _getMatchCard();
+  }
+
