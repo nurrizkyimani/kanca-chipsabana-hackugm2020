@@ -61,6 +61,47 @@ class MatchesRepository {
         .document(selectedUserId)
         .delete();
 
-  
+    await _firestore
+        .collection('users')
+        .document(selectedUserId)
+        .collection('matchedList')
+        .document(currentUserId)
+        .delete();  
   }
+
+  void deleteUser(currentUserId, selectedUserId) async {
+    return await _firestore
+        .collection('users')
+        .document(currentUserId)
+        .collection('selectedList')
+        .document(selectedUserId)
+        .delete();
+  }
+
+  Future selectUser(currentUserId, selectedUserId, currentUserName,
+      currentUserPhotoUrl, selectedUserName, selectedUserPhotoUrl) async {
+    deleteUser(currentUserId, selectedUserId);
+
+    await _firestore
+        .collection('users')
+        .document(currentUserId)
+        .collection('matchedList')
+        .document(selectedUserId)
+        .setData({
+      'name' : selectedUserName,
+      'photoUrl' : selectedUserPhotoUrl,
+    });
+
+    return await _firestore
+        .collection('users')
+        .document(selectedUserId)
+        .collection('matchedList')
+        .document(currentUserId)
+        .setData({
+      'name': currentUserName,
+      'photoUrl': currentUserPhotoUrl,
+    });
+
+
+      }
 }
