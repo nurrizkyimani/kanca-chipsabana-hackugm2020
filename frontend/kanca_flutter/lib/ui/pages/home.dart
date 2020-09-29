@@ -26,8 +26,25 @@ class Home extends StatelessWidget {
           if (state is Uninitialized) {
             return Splash();
           }
-        }
-       )
-    )
+          if (state is Authenticated) {
+            return Tabs(
+              userId: state.userId,
+            );
+          }
+          if (state is AuthenticatedButNotSet) {
+            return Profile(
+              userRepository: _userRepository,
+              userId: state.userId,
+            );
+          }
+          if (state is Unauthenticated) {
+            return Login(
+              userRepository: _userRepository,
+            );
+          } else
+            return Container();
+        },
+      ),
+    );
   }
 }
