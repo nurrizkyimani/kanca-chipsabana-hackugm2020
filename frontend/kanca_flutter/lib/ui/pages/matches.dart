@@ -47,6 +47,29 @@ class _MatchesState extends State<Matches> {
   Widget build(BuildContext context) {
     Size size = MediaQuiery.of(context).size;
 
-    return BlocBuilder<MatchesBloc, MatchesState>()
+    return BlocBuilder<MatchesBloc, MatchesState>(
+      bloc: _matchesBloc,
+      builder: (BuildContext context, MatchesState state) {
+        if (state is LoadingState) {
+          _matchesBloc.add(LoadListEvent(userId: widget.userId));
+          return CircularProgressIndivator();
+        }
+        if (state is LoadUserState) {
+          return CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                pinned: true,
+                backgroundColor: Colors.white,
+                title: Text(
+                  "Matched User",
+                  style: TextStyle(color: Colors.black, fontSize: 30.0),
+                ),
+              ),
+              StreamBuilder
+            ]
+          )
+        }
+      }
+    )
   }
 }
