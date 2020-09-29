@@ -42,4 +42,11 @@ class _MatchesState extends State<Matches> {
     _matchesBloc = MatchesBloc(matchesRepository: matchesRepository);
     super.initState();
   }
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuiery.of(context).size;
+
+    return BlocBuilder<MatchesBloc, MatchesState>()
+  }
 }
