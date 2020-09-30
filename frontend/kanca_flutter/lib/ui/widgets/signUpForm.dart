@@ -31,3 +31,20 @@ class _SignUpFormState extends State<SignUpForm> {
   bool isSignUpButtonEnabled(SignUpState state) {
     return isPopulated && !state.isSubmitting;
   }
+
+  @override
+  void initState() {
+    _signUpBloc = BlocProvider.of<SignUpBloc>(context);
+
+    _emailController.addListener(_onEmailChanged);
+    _passwordController.addListener(_onPasswordChanged);
+
+    super.initState();
+  }
+
+  void _onFormSubmitted() {
+    _signUpBloc.add(
+      SignUpWithCredentialsPressed(
+          email: _emailController.text, password: _passwordController.text),
+    );
+  }
