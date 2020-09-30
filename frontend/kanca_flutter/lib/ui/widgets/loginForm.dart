@@ -7,6 +7,17 @@ import 'package:chill/ui/pages/signUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+class LoginForm extends StatefulWidget {
+  final UserRepository _userRepository;
+
+  LoginForm({@required UserRepository userRepository})
+      : assert(userRepository != null),
+        _userRepository = userRepository;
+
+  @override
+  _LoginFormState createState() => _LoginFormState();
+}
+
 class _LoginFormState extends State<LoginForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
