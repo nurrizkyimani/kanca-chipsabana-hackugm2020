@@ -19,13 +19,45 @@ const db = admin.firestore();
 
 // REST ALL ABOUT THE USERS; 
 
-
 //POST THE USER PROFILE
+exports.getuser = functions.https.onRequest((req, res) => {
+  const body = req.body
+  const mapinput = {}
+
+
+  for (let key in body) {
+    mapinput[key] = body[key]
+    // console.log(key, body[key]);
+  }
+  
+  const result = await db.collection("users").add(mapinput)
+
+  res.send({
+    status: 200, 
+    data: result
+  }) 
+})
+
 
 //GET USER PROFILE PER UID
 
-exports.getuser = functions.https.onRequest((request, response) => {
-  
+exports.getuserperid = functions.https.onRequest((request, response) => {
+
+
+  if (request.query.id == undefined) {
+    response.send({
+      error: 500
+    })
+  }
+
+  const idq = request.query.id
+  const snapshot = await db.collection("users").doc(id).get()
+
+  response.send({
+    status: 200,
+    data: snapshot.data()
+  })
+ 
 })
 
 //GET USER CHAT LIST 
@@ -233,23 +265,66 @@ exports.getnotif = functions.https.onRequest((request, response) => {
 
 //GET THE CHAT LIST OF THE USERS; 
 
-exports.getchatlist = functions.https.onRequest((request, response) => {
-  db.collection("projects")
+exports.fechgroupbyuserid = functions.https.onRequest((req, res) => {
+  if (req.query.uid == undefined) { 
+    res.send("no")
+  }
+
+  const groupRef = db.collection('groups')
+
+  groupRef.where('members', 'array-contains', uid)
+    .onSnapshot((querySnapshot) => {    
+     const allGroups = []
+       querySnapshot.forEach((doc) => {
+         const data = doc.data()
+         data.id = doc.id
+         if (data.recentMessage) allGroups.push(data)
+       })
+
+    })
 
 })
 
 
 //GET THE CHAT ROOM OF THE WITH THE USER
 
-exports.getchat = functions.https.onRequest((request, response) => {
+exports.fetchmessagebyid = functions.https.onRequest((request, response) => {
   db.collection("projects")
 
 })
 
   // POST THE CHAT TO THE USER
+exports.savemessage = functions.https.onRequest((request, response) => {
 
-  exports.postchat = functions.https.onRequest((request, response) => {
-  db.collection("projects")
+  const uid = req.query.id
+  
+  const timestamp = new Date.now()
+  
+  const currentGroupId = 0
+
+  const messageText = req.body
+
+  if (messageText.trim()) {
+    const message = {
+      messageText,
+      sentAt : timestamp,
+      sentBy: uid ,
+    }
+
+     db.collection('messages')
+      .doc(currentGroupId)
+      .collection('message')
+      .add(message)
+      .then(function (docRef) {
+        res.send({
+          message
+        })
+      })
+      .catch(function (error) {
+        res.send({error})
+      })
+
+  }
 
 })
 
