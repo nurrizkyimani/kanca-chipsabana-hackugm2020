@@ -11,9 +11,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'KANCA',
       theme: ThemeData(
-          primaryColor: Color.fromRGBO(253, 41, 123, 1.0),
-          secondaryHeaderColor: Color.fromRGBO(255, 88, 100, 1.0),
-          accentColor: Color.fromRGBO(255, 101, 91, 1.0)),
+          primaryColor: Color.fromRGBO(255, 165, 0, 1.0),
+          secondaryHeaderColor: Color.fromRGBO(255, 140, 0, 1.0),
+          accentColor: Color.fromRGBO(255, 165, 0, 1.0)),
       home: SplashScreen(),
     );
   }

@@ -30,29 +30,29 @@ class _HomePageState extends State<HomePage> {
 
     final _bottomNavBarItems = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
-        icon: Icon(Icons.home),
-        title: Text('Home'),
+        icon: Icon(Tinder_clone.iconfinder_icons_user2_1564535),
+        title: Text('profile'),
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.favorite),
-        title: Text('Favorite'),
+        icon: Icon(Tinder_clone.iconfinder_338_tinder_logo_4375488__1_),
+        title: Text('Match'),
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.favorite),
-        title: Text('Favorite'),
+        icon: Icon(Tinder_clone.iconfinder_message_01_186393),
+        title: Text('Messages'),
       ),
     ];
 
     final _bottomNavBar = BottomNavigationBar(
       items: _bottomNavBarItems,
       currentIndex: _selectedTabIndex,
-      selectedItemColor: Colors.lightBlueAccent,
+      selectedItemColor: Colors.orangeAccent,
       unselectedItemColor: Colors.grey,
       onTap: _onNavBarTapped,
     );
 
     return Scaffold(
-        appBar: AppBar(title: Text('Bottom Navigation Bar')),
+        appBar: AppBar(title: Text('Talents')),
         body: Center(child: _listPage[_selectedTabIndex]),
         bottomNavigationBar: _bottomNavBar);
   }
