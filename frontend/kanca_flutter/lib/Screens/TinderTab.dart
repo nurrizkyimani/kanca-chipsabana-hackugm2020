@@ -59,8 +59,8 @@ class _TinderTabState extends State<TinderTab>
                                 width: ScreenUtil().setWidth(400),
                                 height: ScreenUtil().setWidth(400),
                                 fit: BoxFit.cover,
-                                image:
-                                    new AssetImage('assets/images/abhishekProfile.JPG')),
+                                image: new AssetImage(
+                                    'assets/images/jevoned.png')),
                           ),
                           new SizedBox(
                             height: ScreenUtil().setHeight(40.0),
@@ -68,7 +68,8 @@ class _TinderTabState extends State<TinderTab>
                           new Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: ScreenUtil().setWidth(60.0)),
-                            child: new Text("There is no one new around you ...",
+                            child: new Text(
+                                "There is no one new around you ...",
                                 textAlign: TextAlign.center,
                                 style: new TextStyle(
                                     wordSpacing: 1.2,
