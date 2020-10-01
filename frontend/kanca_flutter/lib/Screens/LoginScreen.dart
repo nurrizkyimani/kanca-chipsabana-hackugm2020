@@ -33,11 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      new Icon(
-                        Tinder_clone.iconfinder_338_tinder_logo_4375488__1_,
-                        color: Colors.white,
-                        size: ScreenUtil().setSp(180.0),
-                      ),
                       new SizedBox(width: ScreenUtil().setWidth(10.0)),
                       new Text(
                         "KANCA",
