@@ -39,7 +39,7 @@ class _ProjectTabState extends State<ProjectTab>
                             height: ScreenUtil().setHeight(30.0),
                           ),
                           new Text(
-                            "Searching nearby matchings ...",
+                            "Searching nearby project ...",
                             style: new TextStyle(
                                 fontSize: ScreenUtil().setSp(60.0),
                                 fontWeight: FontWeight.w200,
