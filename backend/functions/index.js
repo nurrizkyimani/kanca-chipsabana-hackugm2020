@@ -20,14 +20,14 @@ const db = admin.firestore();
 // REST ALL ABOUT THE USERS; 
 
 //POST THE USER PROFILE
-exports.getuser = functions.https.onRequest((req, res) => {
+exports.getuser = functions.https.onRequest(  async(req, res) => {
   const body = req.body
   const mapinput = {}
 
 
   for (let key in body) {
     mapinput[key] = body[key]
-    // console.log(key, body[key]);
+  
   }
   
   const result = await db.collection("users").add(mapinput)
@@ -41,8 +41,7 @@ exports.getuser = functions.https.onRequest((req, res) => {
 
 //GET USER PROFILE PER UID
 
-exports.getuserperid = functions.https.onRequest((request, response) => {
-
+exports.getuserperid = functions.https.onRequest(async (request, response) => {
 
   if (request.query.id == undefined) {
     response.send({
@@ -86,7 +85,6 @@ exports.chatbyid = functions.https.onRequest((request, response) => {
 
 
 //
-
 
 
 
@@ -189,29 +187,36 @@ exports.getusers = functions.https.onRequest(async (request, response) => {
   })
   
 })
-  
 
+//POST USERS
+
+exports.adduser = functions.https.onRequest(async (req, res) => {
+  
+  const body = req.body
+  const mapinput = {}
+
+
+  for (let key in body) {
+    mapinput[key] = body[key]
+    // console.log(key, body[key]);
+  }
+  
+  const result = await db.collection("users").add(mapinput)
+
+  res.send({
+    status: 200, 
+    data: result
+  }) 
+
+})
+
+  
 
 
 //GEt USER that like the projects
 
 exports.getuserwholikeproject = functions.https.onRequest(async (req, res) => {
    
-  // if (req.query.id == undefined) {
-  //   res.send({
-  //     error: 500
-  //   })
-  // }
-
-  // const pid = req.query.id
-
-  // console.log(pid);
-
-  // const pSnapshot = await db.collection("users").doc(pid).get()
-  // const projectData = pSnapshot.data()
-
-  // const result = await this.getprojectbyid(req, res)
-  
 
 
    if (req.query.id == undefined) {
@@ -247,6 +252,8 @@ exports.getuserwholikeproject = functions.https.onRequest(async (req, res) => {
 //GET USER ACCORDING TO THE AI
 
 
+//dari flutter aja;
+
 //POST LIKE TO THE USER THAT SHOWED
 
 exports.postliketouserid = functions.https.onRequest((request, response) => {
@@ -265,12 +272,12 @@ exports.getnotif = functions.https.onRequest((request, response) => {
 
 //GET THE CHAT LIST OF THE USERS; 
 
-exports.fechgroupbyuserid = functions.https.onRequest((req, res) => {
+exports.fechgroupbyuserid = functions.https.onRequest( async (req, res) => {
   if (req.query.uid == undefined) { 
     res.send("no")
   }
 
-  const groupRef = db.collection('groups')
+  const groupRef = await db.collection('groups')
 
   groupRef.where('members', 'array-contains', uid)
     .onSnapshot((querySnapshot) => {    
@@ -285,16 +292,39 @@ exports.fechgroupbyuserid = functions.https.onRequest((req, res) => {
 
 })
 
+//https://levelup.gitconnected.com/structure-firestore-firebase-for-scalable-chat-app-939c7a6cd0f5
+
 
 //GET THE CHAT ROOM OF THE WITH THE USER
 
-exports.fetchmessagebyid = functions.https.onRequest((request, response) => {
-  db.collection("projects")
+exports.fetchmessagebygroupid = functions.https.onRequest((req, res) => {
+  
+  const gid = req.query.gid
+
+  const allm = []
+
+  db.collection('message')
+    .doc(gid)
+    .collection('messages')
+    .orderBy('sentAt')
+    .onSnapshot((querySnapshot) => {
+      const allMessages = []
+      querySnapshot.forEach((doc) => {
+        if (doc) allMessages.push(doc.data())
+      })
+        allm = allMessages
+    })
+  
+  
+  res.send({
+    status: 200,
+    allm
+  })
 
 })
 
   // POST THE CHAT TO THE USER
-exports.savemessage = functions.https.onRequest((request, response) => {
+exports.savemessage = functions.https.onRequest( (request, response) => {
 
   const uid = req.query.id
   
