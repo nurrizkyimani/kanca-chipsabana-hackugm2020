@@ -88,9 +88,10 @@ class _SwitchProfileState extends State<SwitchProfile> {
                             color: Colors.white,
                             elevation: 0.0,
                             onPressed: () {
-                              var snkBAr = new SnackBar(
-                                  content: new Text(
-                                      "You can add this feature dev 😍"));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProjectPage()));
                             },
                             child: new Row(
                               mainAxisAlignment: MainAxisAlignment.center,
