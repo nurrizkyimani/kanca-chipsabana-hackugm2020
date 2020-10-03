@@ -35,29 +35,32 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("Name"),
+            Text(
+              "About Me",
+              style: TextStyle(color: Colors.black, fontSize: 18),
+            ),
             SizedBox(
               height: 4,
             ),
             Text(
-              "Jevon Edmund, 20",
-              style: _style(),
+              "Programer wannabe",
+              style: TextStyle(color: Colors.black, fontSize: 16),
             ),
             SizedBox(
               height: 16,
             ),
             Text(
-              "Email",
+              "Interest",
               style: _style(),
             ),
             SizedBox(
               height: 4,
             ),
-            Text("48shield@gmail.com"),
+            Text("Machine Learning"),
             SizedBox(
               height: 16,
             ),
@@ -68,18 +71,18 @@ class ProfilePage extends StatelessWidget {
             SizedBox(
               height: 4,
             ),
-            Text("New York, USA"),
+            Text("Yogyakarta, Indonesia"),
             SizedBox(
               height: 16,
             ),
             Text(
-              "Language",
+              "Skills",
               style: _style(),
             ),
             SizedBox(
               height: 4,
             ),
-            Text("English, Indonesia"),
+            Text("Python, Machine Learning"),
             SizedBox(
               height: 16,
             ),
@@ -125,91 +128,29 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
+                Spacer(),
                 Column(
                   children: <Widget>[
                     Container(
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 150,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              fit: BoxFit.cover, image: NetworkImage(url))),
+                              fit: BoxFit.cover,
+                              image:
+                                  new AssetImage('assets/images/jevoned.png'))),
                     ),
                     SizedBox(
                       height: 26,
                     ),
                     Text(
-                      "Jevon Edmund",
+                      "Jevon Edmund Nahason",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     )
                   ],
                 ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Schedule",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "8",
-                      style: TextStyle(fontSize: 26, color: Colors.white),
-                    )
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Events",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "12",
-                      style: TextStyle(fontSize: 26, color: Colors.white),
-                    )
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Routines",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "4",
-                      style: TextStyle(fontSize: 26, color: Colors.white),
-                    )
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Savings",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "20K",
-                      style: TextStyle(color: Colors.white, fontSize: 24),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  width: 32,
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "July Goals",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text("50K",
-                        style: TextStyle(color: Colors.white, fontSize: 24))
-                  ],
-                ),
+                Spacer(),
                 SizedBox(
                   width: 16,
                 )
@@ -225,14 +166,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   print("//TODO: button clicked");
                 },
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 24, 16, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 20, 150, 0),
                   child: Transform.rotate(
                     angle: (math.pi * 2.00),
                     child: Container(
                       width: 110,
                       height: 32,
                       child: Center(
-                        child: Text("Edit Profile"),
+                        child: Text("Add a Project"),
                       ),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -257,8 +198,8 @@ class MyClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path p = Path();
 
-    p.lineTo(0, size.height - 70);
-    p.lineTo(size.width, size.height);
+    p.lineTo(0, size.height - 20);
+    p.lineTo(size.width, size.height - 20);
 
     p.lineTo(size.width, 0);
 
