@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 new Text(
-                                  "LOG IN WITH Google",
+                                  "LOG IN WITH PHONE NUMBER",
                                   style: new TextStyle(
                                       color: Colors.grey, wordSpacing: 1.2),
                                 )
@@ -85,6 +85,31 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         new SizedBox(height: ScreenUtil().setHeight(30.0)),
+                        new Container(
+                          width: double.infinity,
+                          height: ScreenUtil().setHeight(105.0),
+                          child: new RaisedButton(
+                            shape: new RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(90.0)),
+                            color: Colors.white,
+                            elevation: 0.0,
+                            onPressed: () {
+                              var snkBAr = new SnackBar(
+                                  content: new Text(
+                                      "You can add this feature dev 😍"));
+                            },
+                            child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                new Text(
+                                  "LOG IN WITH FACEBOOK",
+                                  style: new TextStyle(
+                                      color: Colors.grey, wordSpacing: 1.2),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                         new SizedBox(height: ScreenUtil().setHeight(70.0)),
                         new Text(
                           "Trouble logging in?",
