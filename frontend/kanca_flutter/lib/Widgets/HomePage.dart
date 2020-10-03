@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tinder_clone/Models/tinder_clone_icons.dart';
 import 'package:tinder_clone/Screens/MessagesTab.dart';
+import 'package:tinder_clone/Screens/ProfilePageDesign.dart';
 import 'package:tinder_clone/Screens/ProfileTab.dart';
 import 'package:tinder_clone/Screens/TinderTab.dart';
+import 'package:tinder_clone/Screens/ProfilePageDesign.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -82,11 +84,10 @@ class _HomePageState extends State<HomePage>
           physics: NeverScrollableScrollPhysics(),
           controller: _tabcontroller,
           children: <Widget>[
-            new ProfileTab(),
+            new ProfilePageDesign(),
             new TinderTab(),
             new MessagesTab()
           ],
         ));
   }
 }
-
