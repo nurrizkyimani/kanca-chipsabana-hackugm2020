@@ -5,7 +5,6 @@ import 'package:tinder_clone/Models/tinder_clone_icons.dart';
 import 'package:tinder_clone/Screens/MessagesTab.dart';
 import 'package:tinder_clone/Screens/ProfileTab.dart';
 import 'package:tinder_clone/Screens/TinderTab.dart';
-import 'package:tinder_clone/Screens/TalentList.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final _listPage = <Widget>[
-      new TalentList(),
+      new ProfileTab(),
       new TinderTab(),
       new MessagesTab()
     ];
