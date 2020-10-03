@@ -78,7 +78,6 @@ class _HomePageState extends State<HomePage>
                 ),
               ]),
         ),
-        bottomNavigationBar: BottomNavBar(),
         body: new TabBarView(
           physics: NeverScrollableScrollPhysics(),
           controller: _tabcontroller,
@@ -90,3 +89,4 @@ class _HomePageState extends State<HomePage>
         ));
   }
 }
+
