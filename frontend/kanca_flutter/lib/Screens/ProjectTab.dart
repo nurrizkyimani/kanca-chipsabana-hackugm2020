@@ -6,12 +6,12 @@ import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:tinder_clone/Models/PeopleList.dart';
 import 'package:tinder_clone/Widgets/MatchCard.dart';
 
-class TinderTab extends StatefulWidget {
+class ProjectTab extends StatefulWidget {
   @override
-  _TinderTabState createState() => _TinderTabState();
+  _ProjectTabState createState() => _ProjectTabState();
 }
 
-class _TinderTabState extends State<TinderTab>
+class _ProjectTabState extends State<ProjectTab>
     with SingleTickerProviderStateMixin {
   bool chng = true;
   bool atCenter = true;
@@ -39,7 +39,7 @@ class _TinderTabState extends State<TinderTab>
                             height: ScreenUtil().setHeight(30.0),
                           ),
                           new Text(
-                            "Searching nearby matchings ...",
+                            "Searching nearby project ...",
                             style: new TextStyle(
                                 fontSize: ScreenUtil().setSp(60.0),
                                 fontWeight: FontWeight.w200,
