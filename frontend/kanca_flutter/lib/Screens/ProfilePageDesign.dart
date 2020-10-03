@@ -166,14 +166,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                   print("//TODO: button clicked");
                 },
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 20, 150, 0),
+                  padding: const EdgeInsets.fromLTRB(0, 20, 145, 0),
                   child: Transform.rotate(
                     angle: (math.pi * 2.00),
                     child: Container(
-                      width: 110,
+                      width: 120,
                       height: 32,
                       child: Center(
-                        child: Text("Add a Project"),
+                        child: Text("+ Add a Project"),
                       ),
                       decoration: BoxDecoration(
                           color: Colors.white,

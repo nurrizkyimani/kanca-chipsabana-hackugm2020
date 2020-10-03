@@ -4,6 +4,7 @@ import 'package:tinder_clone/Models/tinder_clone_icons.dart';
 import 'package:tinder_clone/HomePage.dart';
 import 'package:tinder_clone/ProjectPage.dart';
 import 'package:tinder_clone/Screens/ProjectTab.dart';
+import 'package:tinder_clone/Screens/TinderTab.dart';
 
 class SwitchProfile extends StatefulWidget {
   @override
@@ -91,7 +92,7 @@ class _SwitchProfileState extends State<SwitchProfile> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => ProjectPage()));
+                                      builder: (context) => HomePage()));
                             },
                             child: new Row(
                               mainAxisAlignment: MainAxisAlignment.center,
