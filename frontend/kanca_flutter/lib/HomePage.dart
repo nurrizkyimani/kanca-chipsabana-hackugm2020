@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     final _bottomNavBarItems = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(Tinder_clone.iconfinder_icons_user2_1564535),
-        title: Text('profile'),
+        title: Text('Profile'),
       ),
       BottomNavigationBarItem(
         icon: Icon(Tinder_clone.iconfinder_338_tinder_logo_4375488__1_),

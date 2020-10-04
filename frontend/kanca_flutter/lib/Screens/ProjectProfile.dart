@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:math' as math;
 
-class ProfilePageDesign extends StatefulWidget {
+class ProjectProfile extends StatefulWidget {
   @override
-  _ProfilePageDesignState createState() => _ProfilePageDesignState();
+  _ProjectProfileState createState() => _ProjectProfileState();
 }
 
-class _ProfilePageDesignState extends State<ProfilePageDesign> {
+class _ProjectProfileState extends State<ProjectProfile> {
   @override
   void initState() {
     super.initState();
@@ -40,7 +40,7 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              "About Me",
+              "About This Project",
               style: TextStyle(color: Colors.black, fontSize: 18),
             ),
             SizedBox(
@@ -120,7 +120,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       clipper: MyClipper(),
       child: Container(
         padding: EdgeInsets.only(top: 25),
-        decoration: BoxDecoration(color: Colors.orangeAccent, boxShadow: [
+        decoration: BoxDecoration(color: Colors.blueAccent, boxShadow: [
           BoxShadow(color: Colors.red, blurRadius: 20, offset: Offset(0, 0))
         ]),
         child: Column(
@@ -139,13 +139,13 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image:
-                                  new AssetImage('assets/images/jevoned.png'))),
+                                  new AssetImage('assets/images/project.png'))),
                     ),
                     SizedBox(
                       height: 26,
                     ),
                     Text(
-                      "Jevon Edmund Nahason",
+                      "Virtual Hack Project",
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     )
                   ],
