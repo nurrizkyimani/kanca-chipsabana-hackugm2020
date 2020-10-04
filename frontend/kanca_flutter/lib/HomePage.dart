@@ -5,6 +5,7 @@ import 'package:tinder_clone/Models/tinder_clone_icons.dart';
 import 'package:tinder_clone/Screens/MessagesTab.dart';
 import 'package:tinder_clone/Screens/ProfileTab.dart';
 import 'package:tinder_clone/Screens/TinderTab.dart';
+import 'package:tinder_clone/Screens/ProfilePageDesign.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final _listPage = <Widget>[
-      new ProfileTab(),
+      new ProfilePageDesign(),
       new TinderTab(),
       new MessagesTab()
     ];
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     final _bottomNavBarItems = <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Icon(Tinder_clone.iconfinder_icons_user2_1564535),
-        title: Text('profile'),
+        title: Text('Profile'),
       ),
       BottomNavigationBarItem(
         icon: Icon(Tinder_clone.iconfinder_338_tinder_logo_4375488__1_),

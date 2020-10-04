@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tinder_clone/Models/tinder_clone_icons.dart';
-import 'package:tinder_clone/Screens/PhoneNumber.dart';
+import 'package:tinder_clone/Screens/SwitchProfile.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -69,8 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          PhoneNumberScreen()));
+                                      builder: (context) => SwitchProfile()));
                             },
                             child: new Row(
                               mainAxisAlignment: MainAxisAlignment.center,
