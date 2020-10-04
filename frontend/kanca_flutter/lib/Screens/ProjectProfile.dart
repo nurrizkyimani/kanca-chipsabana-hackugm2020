@@ -47,20 +47,20 @@ class ProfilePage extends StatelessWidget {
               height: 4,
             ),
             Text(
-              "Programer wannabe",
+              "Vitual Hack Project UGM",
               style: TextStyle(color: Colors.black, fontSize: 16),
             ),
             SizedBox(
               height: 16,
             ),
             Text(
-              "Interest",
+              "Tags",
               style: _style(),
             ),
             SizedBox(
               height: 4,
             ),
-            Text("Machine Learning"),
+            Text("Business"),
             SizedBox(
               height: 16,
             ),
@@ -76,24 +76,24 @@ class ProfilePage extends StatelessWidget {
               height: 16,
             ),
             Text(
-              "Skills",
+              "Skills Needed",
               style: _style(),
             ),
             SizedBox(
               height: 4,
             ),
-            Text("Python, Machine Learning"),
+            Text("UI/UX Design, Mobile Dev"),
             SizedBox(
               height: 16,
             ),
             Text(
-              "Occupation",
+              "Deadline",
               style: _style(),
             ),
             SizedBox(
               height: 4,
             ),
-            Text("Employee"),
+            Text("7 October 2020"),
             SizedBox(
               height: 16,
             ),
