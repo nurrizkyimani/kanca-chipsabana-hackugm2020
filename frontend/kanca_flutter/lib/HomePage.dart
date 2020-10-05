@@ -6,6 +6,7 @@ import 'package:tinder_clone/Screens/MessagesTab.dart';
 import 'package:tinder_clone/Screens/ProfileTab.dart';
 import 'package:tinder_clone/Screens/TinderTab.dart';
 import 'package:tinder_clone/Screens/ProfilePageDesign.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
         title: Text('Profile'),
       ),
       BottomNavigationBarItem(
-        icon: Icon(Tinder_clone.iconfinder_338_tinder_logo_4375488__1_),
+        icon: Icon(MdiIcons.puzzle),
         title: Text('Match'),
       ),
       BottomNavigationBarItem(

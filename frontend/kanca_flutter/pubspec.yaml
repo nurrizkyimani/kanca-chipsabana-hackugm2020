@@ -21,6 +21,7 @@ dependencies:
     sdk: flutter
   flutter_screenutil: ^1.1.0
   font_awesome_flutter: ^8.7.0
+  material_design_icons_flutter: 4.0.5655
   bubble: ^1.1.9+1
   carousel_slider: ^1.4.1
   # The following adds the Cupertino Icons font to your application.
@@ -30,27 +31,18 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: "^0.8.0"
-
-flutter_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/icon/logo.png"
-
-
-
   
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
-
+flutter:
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
-
+  uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
@@ -72,11 +64,6 @@ flutter_icons:
     - family: Tinder_clone
       fonts:
         - asset: assets/fonts/Tinder_clone.ttf
-    - family:  MyFlutterApp
-      fonts:
-        - asset: assets/fonts/MyFlutterApp.ttf
-    
-
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
@@ -86,4 +73,3 @@ flutter_icons:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-  uses-material-design: true
