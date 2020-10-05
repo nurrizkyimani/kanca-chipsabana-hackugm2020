@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: <Widget>[
                       new SizedBox(width: ScreenUtil().setWidth(10.0)),
                       new Text(
-                        "KANCA",
+                        "Kanca",
                         style: new TextStyle(
                             fontSize: ScreenUtil().setSp(140.0),
                             letterSpacing: 1.2,
@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 new Text(
-                                  "LOG IN WITH Google",
+                                  "LOG IN WITH GOOGLE",
                                   style: new TextStyle(
                                       color: Colors.grey, wordSpacing: 1.2),
                                 )
