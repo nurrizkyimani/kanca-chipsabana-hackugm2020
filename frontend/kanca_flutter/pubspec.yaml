@@ -27,6 +27,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   flutter_tindercard: ^0.1.8
+
+  # Add the dependency for the Firebase Core Flutter SDK
+
+  firebase_core: ^0.4.4+3
+  firebase_auth: ^0.16.0
+  cloud_firestore: ^0.13.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -37,14 +44,11 @@ flutter_icons:
   ios: true
   image_path: "assets/icon/logo.png"
 
-  
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

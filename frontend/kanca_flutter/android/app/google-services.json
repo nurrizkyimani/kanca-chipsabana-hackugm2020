@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "772473011065",
+    "firebase_url": "https://backend-hackugm.firebaseio.com",
+    "project_id": "backend-hackugm",
+    "storage_bucket": "backend-hackugm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772473011065:android:9c74645b1e2eef4a5d0da8",
+        "android_client_info": {
+          "package_name": "com.example.kanca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772473011065-9jef3l8j67u8nuvbbnrs8i7qp4ptr8s6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kanca",
+            "certificate_hash": "f34d4741b87fbdd624a9570b935c6bb9ab6eb123"
+          }
+        },
+        {
+          "client_id": "772473011065-lphj8p25qtjpopsfhcdeebfl7q0673s5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHXWqDITQrMOlzLgu4tpkxot4_H87pvTo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772473011065-lphj8p25qtjpopsfhcdeebfl7q0673s5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
