@@ -6,6 +6,7 @@ import 'package:tinder_clone/Screens/MessagesTab.dart';
 
 import 'package:tinder_clone/Screens/TinderTab.dart';
 import 'package:tinder_clone/Screens/ProjectProfile.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class ProjectPage extends StatefulWidget {
   @override
@@ -35,7 +36,7 @@ class _ProjectPageState extends State<ProjectPage> {
         title: Text('Profile'),
       ),
       BottomNavigationBarItem(
-        icon: Icon(MyFlutterApp.logo_kanca),
+        icon: Icon(MdiIcons.puzzle),
         title: Text('Match'),
       ),
       BottomNavigationBarItem(
