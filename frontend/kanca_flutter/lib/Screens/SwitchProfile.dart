@@ -4,6 +4,7 @@ import 'package:tinder_clone/Models/tinder_clone_icons.dart';
 import 'package:tinder_clone/HomePage.dart';
 import 'package:tinder_clone/ProjectPage.dart';
 import 'package:tinder_clone/Screens/ProjectTab.dart';
+import 'package:tinder_clone/Screens/TinderTab.dart';
 
 class SwitchProfile extends StatefulWidget {
   @override
@@ -88,9 +89,10 @@ class _SwitchProfileState extends State<SwitchProfile> {
                             color: Colors.white,
                             elevation: 0.0,
                             onPressed: () {
-                              var snkBAr = new SnackBar(
-                                  content: new Text(
-                                      "You can add this feature dev 😍"));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomePage()));
                             },
                             child: new Row(
                               mainAxisAlignment: MainAxisAlignment.center,
