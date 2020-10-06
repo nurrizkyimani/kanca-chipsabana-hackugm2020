@@ -1,13 +1,31 @@
 import 'dart:async';
-import 'dart:html';
+import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:math' as math;
-
+import 'package:http/http.dart' as http;
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+
+Future<List<dynamic>> fetchProject() async {
+  final response = await http.get(
+      'https://us-central1-backend-hackugm.cloudfunctions.net/getprojects');
+
+  print(response);
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    List<dynamic> post = jsonDecode(response.body);
+    return post;
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
+  }
+}
 
 class MatchCard extends StatefulWidget {
   final String name;
@@ -40,6 +58,16 @@ class ProjectCard extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _ProjectCardState();
+
+  factory ProjectCard.fromJson(Map<String, dynamic> json) {
+    return ProjectCard(
+      title: json['id'],
+      about: json['about'],
+      location: json['location'],
+      tags: json['tags'],
+      imageUrl: json['imageUrl'],
+    );
+  }
 }
 
 class Tag {
@@ -47,33 +75,23 @@ class Tag {
   Tag(this.userid);
 }
 
-class FirebaseTodos {
-  /// FirebaseTodos.getTodoStream("-KriJ8Sg4lWIoNswKWc4", _updateTodo)
-  /// .then((StreamSubscription s) => _subscriptionTodo = s);
-  static Future<StreamSubscription<Event>> getTodoStream(
-      String todoKey, void onData(ProjectCard projects)) async {
-    StreamSubscription<Event> subscription =
-        FirebaseFirestore.instance.collection("projects").listen((Event event) {
-      var todo = new Todo.fromJson(event.snapshot.key, event.snapshot.value);
-      onData(todo);
-    });
-
-    return subscription;
-  }
-}
-
 class _ProjectCardState extends State<ProjectCard> {
-  StreamSubscription _subscriptionTodo;
+  Future<List<dynamic>> futureProject;
 
   @override
   void initState() {
-    Firebase.initializeApp();
     super.initState();
+
+    futureProject = fetchProject();
+    print(futureProject);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return FutureBuilder(
+        future: futureProject,
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            return Container(
       decoration: new BoxDecoration(
         boxShadow: [
           new BoxShadow(
@@ -195,6 +213,10 @@ class _ProjectCardState extends State<ProjectCard> {
         ],
       ),
     );
+        
+  });
+
+    
   }
 }
 
