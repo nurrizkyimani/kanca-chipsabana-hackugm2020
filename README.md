@@ -8,6 +8,8 @@ https://github.com/OdongoWaga/chill
 
 https://levelup.gitconnected.com/structure-firestore-firebase-for-scalable-chat-app-939c7a6cd0f5
 
+https://www.codingtive.com/2019/05/tutorial-flutter-cara-membuat-bottom-navigation-bar.html
+
 =======
 
 
