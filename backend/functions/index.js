@@ -39,7 +39,7 @@ exports.postuser = functions.https.onRequest( async (req, res) => {
     const result = await db.collection("users").add(mapinput)
 
     res.send({
-      status: 200, 
+      
       data: result
     }) 
   } catch (error) {
@@ -54,11 +54,12 @@ exports.postuser = functions.https.onRequest( async (req, res) => {
 //GET USER PROFILE PER UID
 
 exports.getuserperid = functions.https.onRequest(async (request, response) => {
-  if (request.query.id == undefined) {
-    throw createHttpError.BadRequest();
-  }
 
   try {
+      if (request.query.id == undefined) {
+        throw createHttpError.BadRequest();
+      }
+
     const idq = request.query.id
     const snapshot = await db.collection("users").doc(idq).get()
 
@@ -120,7 +121,7 @@ exports.getprojectsbythetag = functions.https.onRequest(async (req, res) => {
       })
     
     res.send({
-      success: true, 
+      
       data : allTags
     })
   } catch (error) {
@@ -144,7 +145,7 @@ exports.getprojects = functions.https.onRequest( async (request, response) => {
     })
 
     response.send({
-      status: 200,
+      
       data: result
     })
   } catch (error) {
@@ -164,7 +165,7 @@ exports.getprojectbyid = functions.https.onRequest(async (request, response) => 
     const snapshot = await db.collection("projects").doc(idq).get()
 
     response.send({
-      success: true, 
+      
       data: snapshot.data()
     })
   } catch (error) {
@@ -189,7 +190,7 @@ exports.addproject = functions.https.onRequest(async (req, res) => {
     const result = await db.collection("projects").add(mapinput)
 
     res.send({
-    status: 200, 
+     
     data: result
   }) 
   } catch (error) {
@@ -231,16 +232,13 @@ exports.getusers = functions.https.onRequest(async (request, response) => {
 
 // GET USER BY THE TAG IN USER; FOR MACHINE LEARNING; 
 exports.getuserbysuggestedtag = functions.https.onRequest(async (req, res) => {
-  
- 
-
   try {
     const tag = req.body.tag
 
     if (tag == undefined) {
-      createHttpError.BadRequest()
+      throw createHttpError.BadRequest()
+      
     }
-
     const allTags = []
     const groupRef = db.collection('users')
     groupRef.where('tags', 'array-contains', tag)
@@ -255,7 +253,6 @@ exports.getuserbysuggestedtag = functions.https.onRequest(async (req, res) => {
       })
     
     res.send({
-      success: true, 
       data : allTags
   })
   } catch (error) {
@@ -264,12 +261,12 @@ exports.getuserbysuggestedtag = functions.https.onRequest(async (req, res) => {
   
 })
 
-  for (let key in body) {
-    mapinput[key] = body[key]
-    // console.log(key, body[key]);
-  }
+  // for (let key in body) {
+  //   mapinput[key] = body[key]
+  //   // console.log(key, body[key]);
+  // }
   
-  const result = await db.collection("users").add(mapinput)
+  // const result = await db.collection("users").add(mapinput)
 
 //GEt USER that like the projects
 exports.getuserwholikeproject = functions.https.onRequest(async (req, res) => {
@@ -287,7 +284,7 @@ exports.getuserwholikeproject = functions.https.onRequest(async (req, res) => {
 
 
     res.send({
-      success: true, 
+      
       userlike
     })
   } catch (error) {
@@ -330,40 +327,42 @@ exports.getuserwholikeproject = functions.https.onRequest(async (req, res) => {
 
 exports.fecthgroupbyuserid = functions.https.onRequest((req, res) => {
 
-
   try {
       if (req.query.uid == undefined) { 
         res.send("no")
       }
-
-    const groupRef = db.collection('groups')
-
-    const resgroup = null
-
-    groupRef.where('members', 'array-contains', uid)
-      .onSnapshot((querySnapshot) => {    
-      const allGroups = []
-        querySnapshot.forEach((doc) => {
-          const data = doc.data()
-          data.id = doc.id
-          if (data.recentMessage) allGroups.push(data)
-        })
-        
-        resgroup = allGroups
-
-      })
     
-    res.send({
-      success: true, 
-      data: resgroup
+      const uid = req.query.uid
+
+      console.log(uid);
+
+      res.send({
+      uid
     })
+
+    // const groupRef = db.collection('groups')
+
+    // const resgroup = null
+
+    // groupRef.where('members', 'array-contains', uid)
+    //   .onSnapshot((querySnapshot) => {    
+    //   const allGroups = []
+    //     querySnapshot.forEach((doc) => {
+    //       const data = doc.data()
+    //       data.id = doc.id
+    //       if (data.recentMessage) allGroups.push(data)
+    //     })
+        
+    //     resgroup = allGroups
+
+    //   })
+    
+    // res.send({
+    //   data: resgroup
+    // })
   } catch (error) {
     console.error(error);
   }
-
-  
-  
-
 })
 
 //https://levelup.gitconnected.com/structure-firestore-firebase-for-scalable-chat-app-939c7a6cd0f5
@@ -371,36 +370,10 @@ exports.fecthgroupbyuserid = functions.https.onRequest((req, res) => {
 
 //GET THE CHAT ROOM OF THE WITH THE USER
 
-<<<<<<< Updated upstream
-exports.fetchmessagebygroupid = functions.https.onRequest((req, res) => {
-  
-  const gid = req.query.gid
-
-  const allm = []
-
-  db.collection('message')
-    .doc(gid)
-    .collection('messages')
-    .orderBy('sentAt')
-    .onSnapshot((querySnapshot) => {
-      const allMessages = []
-      querySnapshot.forEach((doc) => {
-        if (doc) allMessages.push(doc.data())
-      })
-        allm = allMessages
-    })
-  
-  
-  res.send({
-    status: 200,
-    allm
-  })
-=======
 // exports.fetchmessagebyid = functions.https.onRequest((request, response) => {
   
 
 // })
->>>>>>> Stashed changes
 
 
   // POST THE CHAT TO THE USER

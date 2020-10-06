@@ -1,30 +1,43 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tinder_clone/Models/ChatUser.dart';
 import 'package:tinder_clone/Screens/InPersonChatScreen.dart';
+import 'dart:math' as math;
+import 'package:http/http.dart' as http;
 
 class MessagesTab extends StatefulWidget {
   @override
   _MessagesTabState createState() => _MessagesTabState();
 }
 
+
+
 class _MessagesTabState extends State<MessagesTab> {
   bool _messagesSelected;
   bool _firstVistToFeed = false;
   TextEditingController _fieldController;
 
+ 
   @override
   void initState() {
     super.initState();
+
     _messagesSelected = true;
     _fieldController = new TextEditingController();
+    // futureTab = fetchTab() as CollectionReference;
   }
 
   @override
   Widget build(BuildContext context) {
+
+   
+
     return Column(
       children: <Widget>[
         new Container(

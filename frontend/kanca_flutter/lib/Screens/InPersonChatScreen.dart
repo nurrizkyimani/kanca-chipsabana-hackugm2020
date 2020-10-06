@@ -1,4 +1,5 @@
 import 'package:bubble/bubble.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tinder_clone/Models/ChatUser.dart';
@@ -8,6 +9,7 @@ class InChatScreen extends StatefulWidget {
   ChatUser user;
 
   InChatScreen({@required this.user});
+
   @override
   _InChatScreenState createState() => _InChatScreenState();
 }
@@ -22,6 +24,16 @@ class _InChatScreenState extends State<InChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // CollectionReference chats = FirebaseFirestore.instance
+    //     .collection('messages')
+    //     .doc("yqAl0Y3L0U3nDGUWg043")
+    //     .collection("messages");
+
+    // // return StreamBuilder<QuerySnapshot>(
+    // //   stream: chats.snapshots(),
+    // //   builder: () {},
+    // // );
+
     return new Scaffold(
         backgroundColor: Colors.white,
         appBar: new AppBar(
@@ -185,13 +197,11 @@ class _InChatScreenState extends State<InChatScreen> {
                       child: new Container(
                         height: double.infinity,
                         decoration: new BoxDecoration(
-                        color: Colors.white,
-
+                            color: Colors.white,
                             boxShadow: [
                               new BoxShadow(
-                                offset: new Offset(0.0, 0.0),
-                                color: Colors.grey
-                              )
+                                  offset: new Offset(0.0, 0.0),
+                                  color: Colors.grey)
                             ],
                             borderRadius: new BorderRadius.circular(50.0)),
                         child: new Align(

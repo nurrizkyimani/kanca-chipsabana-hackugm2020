@@ -71,7 +71,7 @@ class _SwitchProfileState extends State<SwitchProfile> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 new Text(
-                                  "I want to look for projects",
+                                  "I want to find talent ",
                                   style: new TextStyle(
                                       color: Colors.grey, wordSpacing: 1.2),
                                 )
@@ -98,7 +98,7 @@ class _SwitchProfileState extends State<SwitchProfile> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 new Text(
-                                  "I want to look for talents",
+                                  "I want to find project",
                                   style: new TextStyle(
                                       color: Colors.grey, wordSpacing: 1.2),
                                 )
