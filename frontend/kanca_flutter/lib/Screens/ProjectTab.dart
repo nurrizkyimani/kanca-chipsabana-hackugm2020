@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:tinder_clone/Models/PeopleList.dart';
+import 'package:tinder_clone/Models/ProjectList.dart';
 import 'package:tinder_clone/Widgets/MatchCard.dart';
 
 class ProjectTab extends StatefulWidget {
@@ -87,7 +88,7 @@ class _ProjectTabState extends State<ProjectTab>
             child: new TinderSwapCard(
               animDuration: 800,
               orientation: AmassOrientation.TOP,
-              totalNum: peoples.length,
+              totalNum: projects.length,
               stackNum: 3,
               swipeEdge: 10.0,
               maxWidth: MediaQuery.of(context).size.width - 10.0,
@@ -95,7 +96,7 @@ class _ProjectTabState extends State<ProjectTab>
               minWidth: MediaQuery.of(context).size.width - 50.0,
               minHeight: MediaQuery.of(context).size.height * 0.73,
               cardBuilder: (context, index) {
-                return peoples[index];
+                return projects[index];
               },
               cardController: _cardController,
               swipeUpdateCallback:
@@ -122,7 +123,7 @@ class _ProjectTabState extends State<ProjectTab>
                 /// Get orientation & index of swiped card!
                 setState(() {
                   atCenter = true;
-                  if (index == peoples.length - 1) {
+                  if (index == projects.length - 1) {
                     _triggerNotFound = true;
                     Future.delayed(Duration(seconds: 5), () {
                       _timeout = true;

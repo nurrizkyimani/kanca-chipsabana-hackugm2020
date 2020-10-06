@@ -4,7 +4,7 @@ import 'package:tinder_clone/Models/tinder_clone_icons.dart';
 import 'package:tinder_clone/Models/my_flutter_app_icons.dart';
 import 'package:tinder_clone/Screens/MessagesTab.dart';
 
-import 'package:tinder_clone/Screens/TinderTab.dart';
+import 'package:tinder_clone/Screens/ProjectTab.dart';
 import 'package:tinder_clone/Screens/ProjectProfile.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -26,7 +26,7 @@ class _ProjectPageState extends State<ProjectPage> {
   Widget build(BuildContext context) {
     final _listPage = <Widget>[
       new ProjectProfile(),
-      new TinderTab(),
+      new ProjectTab(),
       new MessagesTab()
     ];
 
