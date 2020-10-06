@@ -26,7 +26,6 @@ Future<List<dynamic>> fetchProject() async {
     throw Exception('Failed to load album');
   }
 }
-a
 
 class MatchCard extends StatefulWidget {
   final String name;
