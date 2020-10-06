@@ -163,44 +163,8 @@ List<ChatUser> dummyMsg = [
       sent: false,
       received: false,
       newMessages: 2),
-  new ChatUser(
-      name: "Jason",
-      imageURL: 'assets/images/person6.jpg',
-      message: "Hey did you have your smartphone !",
-      date: "11/20",
-      time: "17:30",
-      seen: true,
-      sent: false,
-      received: false,
-      newMessages: 2),
-  new ChatUser(
-      name: "Abhishek Rai",
-      imageURL: 'assets/images/person7.jpg',
-      message: "Hey did you have your smartphone !",
-      date: "11/20",
-      time: "17:30",
-      seen: true,
-      sent: false,
-      received: false,
-      newMessages: 2),
-  new ChatUser(
-      name: "Termilla",
-      imageURL: 'assets/images/person8.jpg',
-      message: "Hey did you have your smartphone !",
-      date: "11/20",
-      time: "17:30",
-      seen: true,
-      sent: false,
-      received: false,
-      newMessages: 2),
-  new ChatUser(
-      name: "Dekward",
-      imageURL: 'assets/images/person3.jpg',
-      message: "Hey did you have your smartphone !",
-      date: "11/20",
-      time: "17:30",
-      seen: true,
-      sent: false,
-      received: false,
-      newMessages: 2),
+
+  
+
+  
 ];
