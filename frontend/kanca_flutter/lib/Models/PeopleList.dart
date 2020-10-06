@@ -2,8 +2,7 @@ import 'package:tinder_clone/Widgets/MatchCard.dart';
 
 List<MatchCard> peoples = [
   MatchCard("Ity", 'assets/images/nurrizky.jpg', 21, 'Software Developer'),
-  MatchCard("Derek Staham", 'assets/images/person2.jpg', 25,
-      'Engineer in Mechatronics'),
+  MatchCard("Linus", 'assets/images/linus_2.png', 20, 'Engineer '),
   MatchCard("Jevon Edmund", 'assets/images/jevoned.png', 20, 'Student'),
   MatchCard("Maxii", 'assets/images/person4.jpg', 23, 'Camerographer 📷'),
   MatchCard(
