@@ -24,6 +24,7 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -38,8 +39,8 @@ android {
 
     defaultConfig {
         multiDexEnabled true
-        applicationId "com.example.kanca"
-        minSdkVersion 21
+        applicationId "com.example.tinder_clone"
+        minSdkVersion 23
         targetSdkVersion 28
         
         versionCode flutterVersionCode.toInteger()
@@ -61,20 +62,19 @@ flutter {
     source '../..'
 }
 
-rootProject.ext {
-  set('FlutterFire', [
-    FirebaseSDKVersion: '21.1.0'
-  ])
-}
+// rootProject.ext {
+//   set('FlutterFire', [
+//     FirebaseSDKVersion: '21.1.0'
+//   ])
+// }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-    implementation 'com.android.support:multidex:1.0.3'
+    implementation "androidx.multidex:multidex:2.0.0"
     
 }
 
-// Add the following line:
-apply plugin: 'com.google.gms.google-services'
+

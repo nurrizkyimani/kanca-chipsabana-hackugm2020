@@ -1,7 +1,13 @@
+import 'dart:async';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:math' as math;
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MatchCard extends StatefulWidget {
   final String name;
@@ -14,6 +20,182 @@ class MatchCard extends StatefulWidget {
 
   @override
   _MatchCardState createState() => _MatchCardState();
+}
+
+class ProjectCard extends StatefulWidget {
+  final String title;
+  final String about;
+  final String location;
+  final List<Tag> tags;
+  final String imageUrl;
+
+  const ProjectCard(
+      {Key key,
+      this.title,
+      this.about,
+      this.location,
+      this.tags,
+      this.imageUrl})
+      : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _ProjectCardState();
+}
+
+class Tag {
+  final String userid;
+  Tag(this.userid);
+}
+
+class FirebaseTodos {
+  /// FirebaseTodos.getTodoStream("-KriJ8Sg4lWIoNswKWc4", _updateTodo)
+  /// .then((StreamSubscription s) => _subscriptionTodo = s);
+  static Future<StreamSubscription<Event>> getTodoStream(
+      String todoKey, void onData(ProjectCard projects)) async {
+    StreamSubscription<Event> subscription =
+        FirebaseFirestore.instance.collection("projects").listen((Event event) {
+      var todo = new Todo.fromJson(event.snapshot.key, event.snapshot.value);
+      onData(todo);
+    });
+
+    return subscription;
+  }
+}
+
+class _ProjectCardState extends State<ProjectCard> {
+  StreamSubscription _subscriptionTodo;
+
+  @override
+  void initState() {
+    Firebase.initializeApp();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: new BoxDecoration(
+        boxShadow: [
+          new BoxShadow(
+              color: Colors.grey.shade700,
+              offset: new Offset(0.0, 5.0),
+              blurRadius: 20.0)
+        ],
+        borderRadius: new BorderRadius.circular(100.0),
+      ),
+      child: new Stack(
+        children: <Widget>[
+          new Container(
+            decoration: new BoxDecoration(
+              boxShadow: [
+                new BoxShadow(
+                    color: Colors.grey.shade700,
+                    offset: new Offset(0.0, 5.0),
+                    blurRadius: 15.0)
+              ],
+              borderRadius: new BorderRadius.circular(100.0),
+            ),
+            height: MediaQuery.of(context).size.height * 0.74,
+            width: MediaQuery.of(context).size.width - 10.0,
+            child: new ClipRRect(
+              borderRadius: new BorderRadius.circular(10.0),
+              child: new Image(
+                  fit: BoxFit.cover, image: new AssetImage(widget.imageUrl)),
+            ),
+          ),
+          new Positioned(
+            bottom: ScreenUtil().setHeight(40.0),
+            left: ScreenUtil().setWidth(40.0),
+            child: new Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                new Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    new Text(
+                      widget.title,
+                      style: new TextStyle(
+                          shadows: [
+                            new Shadow(
+                                color: Colors.black54,
+                                offset: new Offset(1.0, 2.0),
+                                blurRadius: 10.0)
+                          ],
+                          color: Colors.white,
+                          fontSize: ScreenUtil().setSp(95.0),
+                          fontWeight: FontWeight.w800),
+                    ),
+                    new SizedBox(
+                      width: ScreenUtil().setWidth(40.0),
+                    ),
+                    new Text(
+                      widget.location.toString(),
+                      style: new TextStyle(
+                          shadows: [
+                            new Shadow(
+                                color: Colors.black54,
+                                offset: new Offset(1.0, 2.0),
+                                blurRadius: 10.0)
+                          ],
+                          color: Colors.white,
+                          fontSize: ScreenUtil().setSp(70.0),
+                          fontWeight: FontWeight.w300),
+                    ),
+                  ],
+                ),
+                new SizedBox(
+                  height: ScreenUtil().setHeight(10.0),
+                ),
+                new Text(
+                  widget.about,
+                  style: new TextStyle(
+                      color: Colors.white,
+                      shadows: [
+                        new Shadow(
+                            color: Colors.black54,
+                            offset: new Offset(1.0, 2.0),
+                            blurRadius: 10.0)
+                      ],
+                      fontSize: ScreenUtil().setSp(55.0),
+                      fontWeight: FontWeight.w400),
+                ),
+                new Text(
+                  widget.title,
+                  style: new TextStyle(
+                      color: Colors.white,
+                      shadows: [
+                        new Shadow(
+                            color: Colors.black54,
+                            offset: new Offset(1.0, 2.0),
+                            blurRadius: 10.0)
+                      ],
+                      fontSize: ScreenUtil().setSp(55.0),
+                      fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
+          ),
+          new Positioned(
+            bottom: 1.0,
+            right: -1.0,
+            child: new Container(
+              width: MediaQuery.of(context).size.width - 22.0,
+              height: MediaQuery.of(context).size.height * 0.15,
+              decoration: new BoxDecoration(
+                  borderRadius: new BorderRadius.circular(10.0),
+                  gradient: new LinearGradient(
+                      colors: [Colors.transparent, Colors.black26],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.0, 1.0])),
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }
 
 class _MatchCardState extends State<MatchCard> {

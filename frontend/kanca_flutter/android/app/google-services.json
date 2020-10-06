@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:772473011065:android:9c74645b1e2eef4a5d0da8",
+        "mobilesdk_app_id": "1:772473011065:android:78c2d3db2bbe22595d0da8",
         "android_client_info": {
-          "package_name": "com.example.kanca"
+          "package_name": "com.example.tinder_clone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "772473011065-9jef3l8j67u8nuvbbnrs8i7qp4ptr8s6.apps.googleusercontent.com",
+          "client_id": "772473011065-dnqs0aqoj5hg9lsltugh0rgqj9340i0i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.kanca",
+            "package_name": "com.example.tinder_clone",
             "certificate_hash": "f34d4741b87fbdd624a9570b935c6bb9ab6eb123"
           }
         },

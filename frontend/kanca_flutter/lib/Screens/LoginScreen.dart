@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:tinder_clone/Models/tinder_clone_icons.dart';
 import 'package:tinder_clone/Screens/SwitchProfile.dart';
+import '../Firebase/flutterfire.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -50,12 +51,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: EdgeInsets.all(ScreenUtil().setWidth(75.0)),
                     child: new Column(
                       children: <Widget>[
-                        new Text(
-                          'By clicking "Log in",you agree with our Terms.\n Learn how we process your data in our Privacy  Policy and Cookies Policy',
-                          textAlign: TextAlign.center,
-                          style: new TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w500),
-                        ),
                         new SizedBox(height: ScreenUtil().setHeight(50.0)),
                         new Container(
                           width: double.infinity,
@@ -65,7 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(90.0)),
                             color: Colors.white,
                             elevation: 0.0,
-                            onPressed: () {
+                            onPressed: () async {
+                              // await signInWithGoogle();
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(

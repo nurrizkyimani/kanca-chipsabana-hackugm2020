@@ -1,4 +1,4 @@
-package com.example.kanca
+package com.example.tinder_clone
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
