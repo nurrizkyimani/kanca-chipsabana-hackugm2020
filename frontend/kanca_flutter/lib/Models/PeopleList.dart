@@ -5,10 +5,8 @@ List<MatchCard> peoples = [
       "Adam Livene", 'assets/images/person1.jpg', 21, 'Software Developer'),
   MatchCard("Derek Staham", 'assets/images/person2.jpg', 25,
       'Engineer in Mechatronics'),
-  MatchCard(
-      "Alexa Georigna", 'assets/images/person3.jpg', 23, 'Photographer 📷'),
-  MatchCard(
-      "Maxii", 'assets/images/person4.jpg', 23, 'Camerographer 📷'),
+  MatchCard("Jevon Edmund", 'assets/images/jevoned.jpg', 20, 'Student'),
+  MatchCard("Maxii", 'assets/images/person4.jpg', 23, 'Camerographer 📷'),
   MatchCard(
       "Risica Nibah", 'assets/images/person5.jpg', 26, 'Studying in W.A Eng.'),
   MatchCard(
