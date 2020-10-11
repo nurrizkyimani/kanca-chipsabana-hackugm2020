@@ -1,6 +1,8 @@
 # kanca_chip_sabana
 Repository for Hack UGM
 
+1st Winner of UGM Hackathon 2020
+
 Some codes based on Open Source Tutorial
 
 https://github.com/OdongoWaga/chill
